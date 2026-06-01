@@ -1,0 +1,15 @@
+| Folder       | Purpose                 |
+| ------------ | ----------------------- |
+| dataset      | Raw Kaggle CSV files    |
+| scripts      | Python ETL scripts      |
+| parquet      | Converted parquet files |
+| cleaned_data | Cleaned CSV/parquet     |
+| sql          | SQL queries             |
+| powerbi      | PBIX files              |
+| screenshots  | Dashboard images        |
+
+
+EDA --> Exploratory Data Analysis
+ETL --> Extract, Transform, Load
+
+--> CSV --> Parquet --> S3 bucket --> Pandas Cleaning --> SQL Database --> Power BI Dashboard
