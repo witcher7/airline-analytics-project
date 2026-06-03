@@ -1,0 +1,72 @@
+Measure 1: Total Flights
+Total Flights =
+COUNTROWS(fact_flights)
+
+Measure 2: Average Delay
+Average Delay =
+AVERAGE(fact_flights[arrival_delay])
+
+Measure 3: Delayed Flights
+Delayed Flights =
+CALCULATE(
+    COUNTROWS(fact_flights),
+    fact_flights[is_delayed] = 1
+)
+
+Measure 4: Delay %
+Delay % =
+DIVIDE(
+    [Delayed Flights],
+    [Total Flights],
+    0
+)
+
+Format as Percentage.
+
+Measure 5: On-Time Flights
+On Time Flights =
+CALCULATE(
+    COUNTROWS(fact_flights),
+    fact_flights[is_delayed] = 0
+)
+
+Measure 6: Airlines Count
+Total Airlines =
+DISTINCTCOUNT(
+    fact_flights[airline_name]
+)
+
+Measure 7: Average Delay per Airline
+Avg Delay By Airline =
+AVERAGEX(
+    VALUES(
+        fact_flights[airline_name]
+    ),
+    [Average Delay]
+)
+
+Measure 8: High Delay Flights
+High Delay Flights =
+CALCULATE(
+    COUNTROWS(fact_flights),
+    fact_flights[delay_category]
+        = "High Delay"
+)
+
+Measure 9: Moderate Delay Flights
+Moderate Delay Flights =
+CALCULATE(
+    COUNTROWS(fact_flights),
+    fact_flights[delay_category]
+        = "Moderate Delay"
+)
+
+Measure 10: On-Time %
+On Time % =
+DIVIDE(
+    [On Time Flights],
+    [Total Flights],
+    0
+)
+
+Format as Percentage.
